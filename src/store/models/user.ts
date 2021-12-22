@@ -17,6 +17,7 @@ const defaultState: User = {
 const userModel = createModel<RootModel>()({
   state: { ...defaultState },
   reducers: {
+    setUser: (_, payload: User) => ({ ...payload }),
     clearState: () => ({ ...defaultState }),
   },
   effects: () => ({}),

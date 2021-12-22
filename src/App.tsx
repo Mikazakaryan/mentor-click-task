@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
+import Login from "./pages/Auth/Auth";
+import NotFound from "./pages/NotFound";
 
 const Matches = () => <div>matches</div>;
-const Login = () => <div>login</div>;
-const NotFound = () => <div>404</div>;
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const user = useSelector((state: RootState) => state.user);
@@ -31,7 +31,7 @@ const App = () => (
         path="/"
         element={<Navigate to="/matches" state={{ from: "/" }} />}
       />
-      <Route path="/login" element={Login} />
+      <Route path="/login" element={<Login />} />
       <Route
         path="/matches"
         element={
@@ -40,7 +40,7 @@ const App = () => (
           </RequireAuth>
         }
       />
-      <Route path="*" element={NotFound} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
 );
