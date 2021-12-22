@@ -1,14 +1,15 @@
 import { cx } from "@emotion/css";
 import { useState } from "react";
 import { Gender, User } from "../../../types/user";
-import { elementRootStyles, headerStyles, registerRootStyles } from "../Styles";
 import RegisterFirstStep from "./RegisterFirstStep";
 import RegisterSecondStep from "./RegisterSecondStep";
+import { elementRootStyles, headerStyles, registerRootStyles } from "../styles";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userAdditionalData, setUserAdditionalData] = useState<User>({
+    id: "",
     first_name: "",
     last_name: "",
     email: "",

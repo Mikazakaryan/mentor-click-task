@@ -11,7 +11,7 @@ import {
   inputStyles,
   inputErrStyles,
   actionButtonStyles,
-} from "./Styles";
+} from "./styles";
 
 const Login = () => {
   const [email, setEmail] = useState("");

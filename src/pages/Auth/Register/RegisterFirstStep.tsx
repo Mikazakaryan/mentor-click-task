@@ -5,7 +5,7 @@ import {
   inputStyles,
   inputErrStyles,
   actionButtonStyles,
-} from "../Styles";
+} from "../styles";
 
 enum ErrTypes {
   CONFIRM,

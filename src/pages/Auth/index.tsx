@@ -1,6 +1,6 @@
 import Login from "./Login";
 import Register from "./Register";
-import { authRootStyles } from "./Styles";
+import { authRootStyles } from "./styles";
 
 const Auth = () => (
   <div className={authRootStyles}>

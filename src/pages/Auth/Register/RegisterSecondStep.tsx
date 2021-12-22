@@ -1,21 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "../../../store";
 import { signup } from "../../../api/auth";
 import { User } from "../../../types/user";
-import { inputStyles, actionButtonStyles } from "../Styles";
+import { inputStyles, actionButtonStyles } from "../styles";
 
-const RegisterSecondStep = ({
-  userAdditionalData,
-  email,
-  password,
-  setUserAdditionalData,
-}: {
+interface RegisterSecondStepProps {
   userAdditionalData: User;
   email: string;
   password: string;
   setUserAdditionalData: (changedData: { [field: string]: string }) => void;
+}
+
+const RegisterSecondStep: FC<RegisterSecondStepProps> = ({
+  userAdditionalData,
+  email,
+  password,
+  setUserAdditionalData,
 }) => {
   const dispatch = useDispatch<Dispatch>();
   const navigate = useNavigate();

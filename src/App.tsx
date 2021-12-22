@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
-import Login from "./pages/Auth/Auth";
+import Login from "./pages/Auth";
 import NotFound from "./pages/NotFound";
-
-const Matches = () => <div>matches</div>;
+import Matches from "./pages/Matches";
+import Profile from "./pages/Profile";
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const user = useSelector((state: RootState) => state.user);
@@ -24,25 +24,37 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
   return children;
 };
 
-const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route
-        path="/"
-        element={<Navigate to="/matches" state={{ from: "/" }} />}
-      />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/matches"
-        element={
-          <RequireAuth>
-            <Matches />
-          </RequireAuth>
-        }
-      />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </BrowserRouter>
-);
+const App = () => {
+  const matches = useSelector((state: RootState) => state.matches);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/matches" state={{ from: "/" }} />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/matches"
+          element={
+            <RequireAuth>
+              <Matches editable defaultSelected={matches} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
